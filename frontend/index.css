@@ -137,5 +137,36 @@ body {
     line-height: 1.4;
     color: #868ca0;
 }
+/*MAIN*/
+.main {
+    flex: 1; /*zabiera reszte miejsca do konca strony*/
+    display: flex;
+    flex-direction: column;
+    padding: 18px 22px 22px;
+}
+/*main-topbar*/
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+.topbar-left {
+    display: flex;
+    flex-direction: column;
+}
+.page-title {
+    font-size: 35px;
+}
+.page-subtitle {
+    font-size: 22px;
+    color: #959caa;
+    margin-top: 4px;
+}
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+/*main-topbar/uzytkownik*/
 
 
