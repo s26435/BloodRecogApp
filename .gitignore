@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+backend/Blood-1
+backend/out
+
 # Distribution / packaging
 .Python
 build/
