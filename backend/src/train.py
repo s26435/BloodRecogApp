@@ -3,7 +3,7 @@ import os
 from detectron2.config import get_cfg, CfgNode
 from detectron2.data.datasets import register_coco_instances
 from detectron2 import model_zoo
-from src.augmented_trainer import AugmentedTrainer, visualize_random_val_samples
+from src.augmented_trainer import AugmentedTrainer, visualize_random_val_samples # noqa: F401
 
 
 def train_new_model(output_dir: str, datset_dir: str = ""):
