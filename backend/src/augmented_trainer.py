@@ -62,16 +62,10 @@ class AugmentedTrainer(DefaultTrainer):
     
 
 def visualize_random_val_samples(cfg, num_samples: int = 4):
-    """
-    Losuje kilka obrazków z walidacji, robi predykcje i zapisuje wizualizacje.
-    """
-    # Nazwa zbioru walidacyjnego (pierwszy z TEST)
     val_name = cfg.DATASETS.TEST[0]
     dataset_dicts = DatasetCatalog.get(val_name)
     metadata = MetadataCatalog.get(val_name)
 
-    # Upewnij się, że używamy wytrenowanych wag
-    # (jeśli masz inny checkpoint, zmień nazwę pliku)
     final_weights = os.path.join(cfg.OUTPUT_DIR, "model_final.pth")
     if os.path.exists(final_weights):
         cfg.MODEL.WEIGHTS = final_weights
@@ -80,7 +74,6 @@ def visualize_random_val_samples(cfg, num_samples: int = 4):
 
     os.makedirs(os.path.join(cfg.OUTPUT_DIR, "vis_val"), exist_ok=True)
 
-    # Losowe próby
     samples = random.sample(dataset_dicts, k=min(num_samples, len(dataset_dicts)))
 
     for i, d in enumerate(samples):
@@ -93,14 +86,14 @@ def visualize_random_val_samples(cfg, num_samples: int = 4):
         outputs = predictor(img)
 
         v = Visualizer(
-            img[:, :, ::-1],  # BGR -> RGB
+            img[:, :, ::-1],
             metadata=metadata,
             scale=0.7,
-            instance_mode=ColorMode.IMAGE_BW,  # tło przyciemnione
+            instance_mode=ColorMode.IMAGE_BW,
         )
 
         out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-        out_img = out.get_image()[:, :, ::-1]  # z powrotem do BGR dla cv2
+        out_img = out.get_image()[:, :, ::-1]
 
         out_path = os.path.join(cfg.OUTPUT_DIR, "vis_val", f"val_vis_{i}.png")
         cv2.imwrite(out_path, out_img)
