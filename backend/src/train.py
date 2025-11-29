@@ -20,7 +20,7 @@ def train_new_model(output_dir: str, datset_dir: str = ""):
     cfg.SOLVER.AMP.ENABLED = True
     cfg.SOLVER.CHECKPOINT_PERIOD = 1000000
     cfg.TEST.EVAL_PERIOD = 500
-    cfg.SOLVER.LOGGING_PERIOD = 1
+    #cfg.SOLVER.LOGGING_PERIOD = 1
     cfg.SOLVER.NESTEROV = True
     cfg.SOLVER.CLIP_GRADIENTS.ENABLED = True
     cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE = "norm"
@@ -42,11 +42,21 @@ def train_new_model(output_dir: str, datset_dir: str = ""):
             )
     cfg.DATASETS.TRAIN = ("train",)
     cfg.DATASETS.TEST = ("val",)
-    cfg.SOLVER.MAX_ITER = 1000
+    cfg.SOLVER.MAX_ITER = 100 #200 mi wystarczy do testow dzialania strony
+    #do wywalenia START
+    cfg.SOLVER.IMS_PER_BATCH = 4
+    cfg.SOLVER.BASE_LR = 0.00025 
+    cfg.SOLVER.STEPS = []
+    #cfg.SOLVER.LOG_PERIOD = 5 #pokazuje co 5 iteracji loga
+    #KONIEC
     cfg.OUTPUT_DIR = output_dir
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
     cfg.MODEL.DEVICE = device
+    #do wywalenia pozniej START
+    if device == "cpu":
+        cfg.SOLVER.AMP.ENABLED = False
+    #KONIEC
     with open(os.path.join(cfg.OUTPUT_DIR, "config.yaml"), "w") as f:
         f.write(cfg.dump())
     trainer = AugmentedTrainer(cfg)

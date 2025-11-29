@@ -4,6 +4,9 @@ from pathlib import Path
 from PIL import Image
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 from src.utils import build_predictor, run_inference_on_image
 from src.train import train_new_model
 from src.download_ds import download_ds
@@ -13,6 +16,10 @@ dotenv.load_dotenv()
 
 OUT_DIR: Path = Path("out")
 DS_DIR: Path = Path("Blood-1")
+BASE_DIR = Path(__file__).resolve().parent 
+ROOT_DIR = BASE_DIR.parent
+FRONTEND_DIR = ROOT_DIR / "frontend"
+
 
 if not OUT_DIR.exists() or not Path(OUT_DIR / "model_final.pth").exists():
     if not DS_DIR.exists():
@@ -22,6 +29,11 @@ if not OUT_DIR.exists() or not Path(OUT_DIR / "model_final.pth").exists():
 predictor, infer_cfg = build_predictor(str(OUT_DIR))
 
 app = FastAPI()
+app.mount("/static",StaticFiles(directory=str(FRONTEND_DIR)), name="static")
+
+@app.get("/",response_class=FileResponse)
+async def serve_home():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 @app.get("/helth/")
 def health():
