@@ -70,10 +70,95 @@
                         </div>
                     </div>
                 </header>
+                <!--glowny contetn-->
+                <section class="content">
+                    <div class="row row--upload">
+                        <section class="card card--upload-form">
+                            <header class="card-header">
+                                <h2 class="card-title">Konfiguracja analizy</h2>
+                                <span class="card-tag">Wczytaj obraz</span>
+                            </header>
+                            <div class="card-body">
+                                <form class="upload-form">
+                                    <div class="form-field">
+                                        <label for="analysis-name" class="form-label">
+                                            Nazwa analizy
+                                        </label>
+                                        <input 
+                                            type="text"
+                                            id="analysis-name"
+                                            name="analysis_name"
+                                            class="form-input"
+                                            placeholder="Próbka_067"
+                                        />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="analysis-image" class="form-label">
+                                            Obraz do analizy
+                                        </label>
+                                        <input 
+                                            type="file"
+                                            id="analysis-image"
+                                            name="analysis_image"
+                                            class="form-input form-input--file"
+                                            accept="image/png, image/jpeg"
+                                        />
+                                        <p class="form-hint">
+                                            Obsługiwane formaty: JPG, PNG.
+                                        </p>
+                                    </div>
+                                    <!--NOtes-->
+                                    <div class="form-field">
+                                        <label for="analysis-notes" class="form-label">
+                                            Notatki
+                                        </label>
+                                        <textarea
+                                        id="analysis-notes"
+                                        name="analysis_notes"
+                                        class="form-textarea"
+                                        rows="5"
+                                        placeholder="Notatki :D"
+                                        ></textarea>
+                                    </div>
+                                    <!--uruchomienie-->
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn-primary">
+                                            Urochom analizę
+                                        </button>
+                                        <button type="button" class="btn-ghost">
+                                            Clear
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-caption">
+                                    Po wysłaniu formularza wynik analizy pojawi się w zakładce <strong>History</strong>
+                                </p>
+                            </footer>
+                        </section>
+                        <!--podglad-->
+                        <section class="card card--upload-preview">
+                            <header class="card-header">
+                                <h2 class="card-title">Status</h2>
+                            </header>
+                            <div class="card-body upload-preview-body">
+                                <div class="upload-preview-placeholder">
+                                    <span class="upload-preview-label">
+                                        Podgląd pojawi się tutaj
+                                    </span>
+                                </div>
+                                <!--wskazowki-->
+                                <ul class="upload-hints">
+                                    <li>Nie wrzucaj tu zdjec furasow</li>
+                                    <li>UNikaj plikow o pojemnosci 1tB</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </section>
 
 
-
-                
             </main>
         </div>
         <script>
