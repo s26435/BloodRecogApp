@@ -393,4 +393,80 @@ body {
     letter-spacing: 0.08em;
 }
 
+/*karty-statistics*/
+.card--stat {
+    min-height: 100px;
+}
+.stat-number {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.stat-label {
+    font-size: 15px;
+    color:#959caa;
+}
+
+/*karta-guide*/
+.card--wide {
+    min-height: 150px;
+}
+.quickstart-list {
+    list-style: decimal;
+    margin-left: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d3d7e4;
+}
+.quickstart-list li + li { /*odstep miedzy punktami listy*/
+    margin-top: 6px;
+}
+
+/*karta-ostatnie analizy*/
+.card--recent {
+    min-height: 150px;
+}
+.recent-list {
+    list-style: none;
+}
+.recent-item + .recent-item {
+    margin-top: 6px;
+}
+.recent-item:hover {
+    background: #252a35;
+    box-shadow: 0 0 20px rgba(255,63,109,0.28);
+}
+.recent-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8c92a3;
+    margin-right: 8px;
+}
+.recent-dot--hot {
+    background: #ff3f6d;
+    box-shadow: 0 0 20px rgba(255,63,109,0.28);
+}
+.recent-main {
+    display: flex;
+    flex-direction: column;
+}
+.recent-meta {
+    font-size: 13px;
+    color: #8c92a3;
+}
+
+/*dla malych*/
+@media (max-width= 1000px) {
+    .sidebar {
+        display: none;
+    }
+    .main {
+        padding: 16px;
+    }
+    .row--top, .row--stats, .row--bottom {
+        grid-template-columns: minmax(0,1fr);
+    }
+}
+
 
