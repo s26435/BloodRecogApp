@@ -207,3 +207,190 @@ body {
     gap: 16px;
 }
 
+/*content-WIERSZE*/
+.row {
+    display: grid;
+    gap: 16px;
+}
+.row--top {
+    grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+}
+.row--stats {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.row--bottom {
+    grid-template-columns:minmax(0,2fr) minmax(0,1.3fr) ;
+}
+
+/*KARTY :D*/
+/*main karta+podlozenie pod reszte*/
+.card {
+    background: linear-gradient(145deg,#2a2e37,#262933);
+    border-radius: 14px;
+    border: 1px solid #343a46;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.45);
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.card-title {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase; /*do zdecydowania czy z czy bez*/
+}
+.card-tag {
+    font-size: 18px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #212531;
+    border: 1px solid #343a46;
+    color: #a4aab8
+}
+.card-body {
+    flex:1;
+}
+.card-footer {
+    margin-top: 8px;
+}
+.card-caption {
+    font-size: 17px;
+    color: #8c92a3;
+}
+/*karta-wykresu*/
+.card-chart {
+    min-height: 230px;
+}
+.card-body--chart {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.chart-placeholder {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+/*osie*/
+.chart-axis {
+    position: absolute;
+    background: #7e000a;
+    opacity: 0.5;
+}
+.chart-axis--x {
+    height: 1px;
+    width: 100%;
+    bottom: 14px;
+    left:0;
+}
+.chart-axis--y {
+    height: 100%;
+    width: 1px;
+    bottom: 24px;
+    left:0;
+}
+/*linie (placeholder :D)*/
+.chart-line {
+    position: absolute;
+    left: 24px;
+    right: 10px;
+    top: 36px;
+    bottom: 24px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,63,109,0.9) transparent;
+    transform: skewX(-10deg);
+}
+.chart-glow {
+    position: absolute;
+    left: 24px;
+    right: 10px;
+    top: 36px;
+    bottom: 24px;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 30px rgba(255,63,109,0.8);
+    opacity: 0.4;
+}
+.chart-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff3f6d;
+    box-shadow: 0 0 12px rgba(255,63,109,0.8);
+}
+.chart-point--hot {
+    right: 30px;
+    top: 54px;
+}
+.chart-point--soft {
+    left: 80px;
+    bottom: 40px;
+    opacity: 0.7;
+}
+
+/*Gauge - wskaznik na jakim jest model*/
+.card--gauge {
+    min-height: 230px;
+}
+.card-body--gauge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gauge {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+.gauge-arc {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 8px solid #343a46;
+    border-top-color: #ff3f6d;
+    border-right-color: #ff1744;
+    box-shadow: 0 0 25px rgba(255,63,109,0.5);
+}
+.gauge-needle {
+    position: absolute;
+    width: 2px;
+    height: 48%;
+    background: #ffffff;
+    top: 26%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(25deg);
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+.gauge-center {
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    background: #2a2e37;
+    border: 1px solid #343a46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.gauge-value {
+    font-size: 20px;
+    font-weight: 600;
+}
+.gauge-label {
+    font-size: 9px;
+    color: #a4aab8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
