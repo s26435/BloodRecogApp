@@ -79,7 +79,7 @@
                                 <span class="card-tag">Wczytaj obraz</span>
                             </header>
                             <div class="card-body">
-                                <form class="upload-form">
+                                <form class="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
                                     <div class="form-field">
                                         <label for="analysis-name" class="form-label">
                                             Nazwa analizy
@@ -140,7 +140,7 @@
                         <!--podglad-->
                         <section class="card card--upload-preview">
                             <header class="card-header">
-                                <h2 class="card-title">Status</h2>
+                                <h2 class="card-title">Podgląd</h2>
                             </header>
                             <div class="card-body upload-preview-body">
                                 <div class="upload-preview-placeholder">
@@ -162,6 +162,7 @@
             </main>
         </div>
         <script src="/static/JS/nav.js"></script> <!--odpowiada za przechodzenie miedzy tabami-->
+        <script src="/static/JS/upload.js"></script>
     </body>
 </html>
 
