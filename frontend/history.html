@@ -40,9 +40,75 @@
                         <span class="nav-label">Model</span>
                     </button>
                 </nav>
+                <!--Czesc dolna opisowa-->
+                <div class="sidebar-footer">
+                    <div class="status-pill">
+                        <span class="status-dot status-dot--unknown"></span>
+                        <span class="status-text">API status: mysle</span>
+                    </div>
+                    <p class="sidebar-meta">
+                        Backend: FastAPI + Detectron2<br/>
+                        Model: Faster R-CNN R50 FPN
+                        Made by kodON JW MG
+                    </p>
+                </div>
             </aside>
+            <!--glowna czesc-->
+            <main class="main">
+                <!--Gorny pasek-->
+                <header class="topbar">
+                    <div class="topbar-left">
+                        <h1 class="page-title">History</h1>
+                    </div>
+                    <div class="topbar-right">
+                        <div class="user-chip">
+                            <div class="user-avatar">M</div>
+                            <div class="user-info">
+                                <span class="user-name">MrBasis</span>
+                                <span class="user-role">Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!--content-->
+                <section class="content">
+                    <section class="card card--history">
+                        <header class="card-header">
+                            <h2 class="card-title">Lista analiz</h2>
+                            <span class="card-tag">Ostatnie 67</span>
+                        </header>
+                        <div class="card-body">
+                            <div class="history-filters">
+                                <input
+                                    class="form-input history-search"
+                                    placeholder="Szukaj po nazwie lub ID"
+                                />
+                            </div>
+                            <div class="history-table">
+                                <div class="history-header-row">
+                                    <span>Analiza</span>
+                                    <span>Data</span>
+                                    <span>Status</span>
+                                    <span>KLiknij</span>
+                                </div>
+                                <button class="history-row">
+                                    <span>Próbka_067</span>
+                                    <span>2025-11-28</span>
+                                    <span class="status-pill--succes">Zakończona</span>
+                                    <span class="history-col--actions">Otwórz</span>
+                                </button>
+                                <button class="history-row">
+                                    <span>Próbka_021</span>
+                                    <span>2025-11-30</span>
+                                    <span class="status-pill--running">W trakcie</span>
+                                    <span class="history-col--actions">Szczegóły</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </main>
         </div>
-
         <script>
             document.querySelectorAll(".nav-item").forEach((btn) => {
                 btn.addEventListener("click", () =>  {
