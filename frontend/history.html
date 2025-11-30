@@ -91,19 +91,37 @@
                                     <span>Data</span>
                                     <span>Status</span>
                                     <span>KLiknij</span>
+                                </div>                
+                            </div>
+                        </div>
+                    </section>
+                    <section class="card card--analysis-detail" style="display: none; margin-top: 1.5rem;">
+                        <header class="card-header">
+                            <h2 class="card-title analysis-title">Szczegóły analizy</h2>
+                            <span class="card-tag analysis-date">Data</span>
+                        </header>
+                        <div class="card-body analysis-detail-body">
+                            <div class="analysis-image">
+                                <div class="analysis-image-block">
+                                    <h3>Oryginał</h3>
+                                    <img 
+                                        class="analysis-img-original"
+                                        style="max-width: 450px; border-radius: 8px;"
+                                        alt="Oryginalny obraz"
+                                    />
                                 </div>
-                                <button class="history-row">
-                                    <span>Próbka_067</span>
-                                    <span>2025-11-28</span>
-                                    <span class="status-pill--success">Zakończona</span>
-                                    <span class="history-col--actions">Otwórz</span>
-                                </button>
-                                <button class="history-row">
-                                    <span>Próbka_021</span>
-                                    <span>2025-11-30</span>
-                                    <span class="status-pill--running">W trakcie</span>
-                                    <span class="history-col--actions">Szczegóły</span>
-                                </button>
+                                <div class="analysis-image-block">
+                                    <h3>Wynik</h3>
+                                    <img
+                                        class="analysis-img-result"
+                                        style="max-width: 450px; border-radius: 8px;"
+                                        alt="Obraz po analizie"
+                                    />
+                                </div>
+                            </div>
+                            <div class="analysis-notes-wrapper" style="margin-top: 1rem;">
+                                <h3>Notatki</h3>
+                                <p class="analysis-notes">Brak notatek</p>
                             </div>
                         </div>
                     </section>
@@ -111,6 +129,7 @@
             </main>
         </div>
         <script src="/static/JS/nav.js"></script> <!--odpowiada za przechodzenie miedzy tabami-->
+        <script src="/static/JS/history.js"></script> 
     </body>
 </html>
 
