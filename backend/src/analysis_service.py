@@ -12,11 +12,12 @@ from src.download_ds import download_ds
 
 OUT_DIR: Path = Path("out")
 DS_DIR: Path = Path("Blood-1")
-BASE_DIR = Path(__file__).resolve().parent 
-ROOT_DIR = BASE_DIR.parent
-FRONTEND_DIR = ROOT_DIR / "frontend"
-UPLOADS_DIR: Path = FRONTEND_DIR / "uploads"
-DATA_DIR: Path = ROOT_DIR / "Data"
+BASE_DIR: Path = Path(__file__).resolve().parent
+ROOT_DIR: Path = BASE_DIR.parent
+FRONTEND_DIR: Path = ROOT_DIR / "frontend"
+
+UPLOADS_DIR: Path = FRONTEND_DIR / "uploads"  
+DATA_DIR: Path = ROOT_DIR / "data"
 ANALYSES_DB_PATH: Path = DATA_DIR / "analyses.json"
 
 
@@ -89,13 +90,13 @@ def process_analysis(
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     record: Dict[str, Any] = {
-        "id": analysis_id,
-        "name": name or analysis_id,
-        "created_at": created_at,
-        "original_image_url": f"/static/uploads/{orig_filename}",
-        "processed_image_url": f"/static/uploads/{result_filename}",
-        "notes": notes or "",
-    }
+    "id": analysis_id,
+    "name": name or analysis_id,
+    "created_at": created_at,
+    "original_image_url": f"/uploads/{orig_filename}",
+    "processed_image_url": f"/uploads/{result_filename}",
+    "notes": notes or "",
+}
 
     analyses = load_analyses()
     analyses.append(record)
