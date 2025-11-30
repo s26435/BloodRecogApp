@@ -20,22 +20,22 @@
                 <!--GUziki-->
                 <nav class="sidebar-nav">
                     <!--Guzik od Homea-->
-                    <button class="nav-item nav-item--activate" type="button">
+                    <button class="nav-item nav-item--activate" data-target="/">
                         <span class="nav-indicator"></span>
                         <span class="nav-label">Home</span>
                     </button>
                     <!--Guzik od Uploada-->
-                    <button class="nav-item" type="button">
+                    <button class="nav-item" data-target="/upload">
                         <span class="nav-indicator"></span>
                         <span class="nav-label">Upload</span>
                     </button>
                     <!--Guzik od Hisotri-->
-                    <button class="nav-item" type="button">
+                    <button class="nav-item" data-target="/history">
                         <span class="nav-indicator"></span>
                         <span class="nav-label">History</span>
                     </button>
                     <!--Guzik od MOdelu-->
-                    <button class="nav-item" type="button">
+                    <button class="nav-item" data-target="/model">
                         <span class="nav-indicator"></span>
                         <span class="nav-label">Model</span>
                     </button>
@@ -203,6 +203,14 @@
                 </section>
             </main>
         </div>
+        <script>
+            document.querySelectorAll(".nav-item").forEach((btn) => {
+                btn.addEventListener("click", () =>  {
+                    const target = btn.dataset.target;
+                    if (target) window.location.href = target;
+                });
+            });
+        </script>
     </body>
 </html>
 

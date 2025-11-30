@@ -3,9 +3,54 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-        <link rel="stylesheet" href="/static/index.css">
+        <link rel="stylesheet" href="/static/upload.css">
         <title>Ichor - Upload</title>
     </head>
+    <body>
+        <div class="app">
+            <!--lewa czesc-->
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <div class="logo-mark">IL</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Ichor</span>
+                        <span class="logo-subtitle">Lab Console</span>
+                    </div>
+                </div>
 
+                <nav class="sidebar-nav">
+                    <!--Guzik od Homea-->
+                    <button class="nav-item" data-target="/">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Home</span>
+                    </button>
+                    <!--Guzik od Uploada-->
+                    <button class="nav-item nav-item--activate" data-target="/upload">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Upload</span>
+                    </button>
+                    <!--Guzik od Hisotri-->
+                    <button class="nav-item" data-target="/history">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">History</span>
+                    </button>
+                    <!--Guzik od MOdelu-->
+                    <button class="nav-item" data-target="/model">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Model</span>
+                    </button>
+                </nav>
+            </aside>
+        </div>
 
+        <script>
+            document.querySelectorAll(".nav-item").forEach((btn) => {
+                btn.addEventListener("click", () =>  {
+                    const target = btn.dataset.target;
+                    if (target) window.location.href = target;
+                });
+            });
+        </script>
+    </body>
+</html>
 

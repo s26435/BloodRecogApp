@@ -30,10 +30,18 @@ predictor, infer_cfg = build_predictor(str(OUT_DIR))
 
 app = FastAPI()
 app.mount("/static",StaticFiles(directory=str(FRONTEND_DIR)), name="static")
-
+#frontend
 @app.get("/",response_class=FileResponse)
 async def serve_home():
     return FileResponse(FRONTEND_DIR / "index.html")
+
+@app.get("/upload",response_class=FileResponse)
+async def serve_upload():
+    return FileResponse(FRONTEND_DIR / "upload.html")
+
+@app.get("/history",response_class=FileResponse)
+async def serve_upload():
+    return FileResponse(FRONTEND_DIR / "history.html")
 
 @app.get("/helth/")
 def health():
