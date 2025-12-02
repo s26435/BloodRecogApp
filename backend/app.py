@@ -73,14 +73,13 @@ async def create_analysis(
     return {"status": "ok", "analysis": record}
 
 
-# LIST – dla historii (history.js → fetch("/api/analyses/"))
+# LIST – dla historii (history.js - fetch("/api/analyses/"))
 @app.get("/api/analyses", response_class=JSONResponse)
 @app.get("/api/analyses/", response_class=JSONResponse)
 def api_list_analyses():
     return list_analyses()
 
 
-# DETAIL – gdybyś kiedyś chciał wyświetlać szczegóły po ID z backendu
 @app.get("/api/analyses/{analysis_id}", response_class=JSONResponse)
 @app.get("/api/analyses/{analysis_id}/", response_class=JSONResponse)
 def api_get_analysis(analysis_id: str):
