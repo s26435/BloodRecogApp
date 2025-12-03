@@ -44,7 +44,7 @@
                 <div class="sidebar-footer">
                     <div class="status-pill">
                         <span class="status-dot status-dot--unknown"></span>
-                        <span class="status-text">API status: mysle</span>
+                        <span class="status-text">API status: connected</span>
                     </div>
                     <p class="sidebar-meta">
                         Backend: FastAPI + Detectron2<br/>
@@ -61,7 +61,7 @@
                     <div class="topbar-left">
                         <h1 class="page-title">Panel główny</h1>
                         <p class="page-subtitle">
-                            Szybka sprawna sliska analiza obrazów krwi
+                            Szybka analiza obrazów składników krwi
                         </p>
                     </div>
                     <div class="topbar-right">
@@ -85,7 +85,7 @@
                                 <span class="card-tag">Ostatnie 30 dni</span>
                             </header>
                             <div class="card-body card-body--chart">
-                                <div class="chart-placeholder">
+                                <div class="chart-placeholder" id="chart-placeholder">
                                     <div class="chart-line"></div>
                                     <div class="chart-glow"></div>
                                     <div class="chart-axis chart-axis--x"></div>
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <footer class="card-footer">
-                                <p class="card-caption">Symulacja wykresu - jakis placeholder fn</p>
+                                <p class="card-caption">Wykres ilości analiz w czasie</p>
                             </footer>
                         </section>
 
@@ -125,7 +125,7 @@
                                 <h3 class="card-title">Łączna liczba analiz</h3>
                             </header>
                             <div class="card-body">
-                                <p class="stat-number">67</p>
+                                <p class="stat-number" id="total-analyses">0</p>
                                 <p class="stat-label">zapisanych w historii</p>
                             </div>
                         </section>
@@ -135,7 +135,7 @@
                                 <h3 class="card-title">Ostatnia analiza</h3>
                             </header>
                             <div class="card-body">
-                                <p class="stat-number">67 min</p>
+                                <p class="stat-number" id="last-analysis-ago">-</p>
                                 <p class="stat-label">czas od ostatniej analizy</p>
                             </div>
                         </section>
@@ -160,10 +160,10 @@
                             <div class="card-body">
                                 <ol class="quickstart-list">
                                     <!--tu bedzie jakis basic guide co robic w odpalaniu-->
-                                    <li>m</li>
-                                    <li>a</li>
-                                    <li>t</li>
-                                    <li>i</li>
+                                    <li>Przejdź do zakładki Upload, gdzie stworzysz próbkę z analizą</li>
+                                    <li>Nazwij próbkę, załącz wybrane zdjęcie (pamiętaj o zgodnych formatach) oraz dodaj ewentualną notatkę</li>
+                                    <li>Po prawej stronie zobaczysz podgląd wybranego pliku, upewnij się czy to jest ten który chciałeś</li>
+                                    <li>Kliknij "Uruchom analizę" i zostaniesz przeniesiony do zakładki History, gdzie będzie na ciebie czekać gotowa analiza </li>
                                 </ol>
                             </div>
                         </section>
@@ -174,29 +174,7 @@
                                 <h2 class="card-title">Ostatnie analizy</h2>
                             </header>
                             <div class="card-body">
-                                <ul class="recent-list">
-                                    <li class="recent-item">
-                                        <div class="recent-dot recent-dot--hot"></div>
-                                        <div class="recent-main">
-                                            <span class="recent-title">Sample_067.png</span>
-                                            <span class="recent-meta">4 detekcje przed 21 min (?)</span>
-                                        </div>
-                                    </li>
-                                    <li class="recent-item">
-                                        <div class="recent-dot recent-dot--hot"></div>
-                                        <div class="recent-main">
-                                            <span class="recent-title">Sample_067.png</span>
-                                            <span class="recent-meta">4 detekcje przed 21 min (?)</span>
-                                        </div>
-                                    </li>
-                                    <li class="recent-item">
-                                        <div class="recent-dot recent-dot--hot"></div>
-                                        <div class="recent-main">
-                                            <span class="recent-title">Sample_067.png</span>
-                                            <span class="recent-meta">4 detekcje przed 21 min (?)</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <ul class="recent-list" id="recent-analysis"></ul>
                             </div>
                         </section>
                     </div>
@@ -204,6 +182,7 @@
             </main>
         </div>
         <script src="/static/JS/nav.js"></script> <!--odpowiada za przechodzenie miedzy tabami-->
+        <script src="/static/JS/index.js"></script> <!--odpowiada za funkcjonalność statystyk-->
     </body>
 </html>
 
