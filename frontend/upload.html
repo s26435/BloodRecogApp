@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="/static/upload.css">
+        <title>Ichor - Upload</title>
+    </head>
+    <body>
+        <div class="app">
+            <!--lewa czesc-->
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <div class="logo-mark">IL</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Ichor</span>
+                        <span class="logo-subtitle">Lab Console</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <!--Guzik od Homea-->
+                    <button class="nav-item" data-target="/">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Home</span>
+                    </button>
+                    <!--Guzik od Uploada-->
+                    <button class="nav-item nav-item--activate" data-target="/upload">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Upload</span>
+                    </button>
+                    <!--Guzik od Hisotri-->
+                    <button class="nav-item" data-target="/history">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">History</span>
+                    </button>
+                    <!--Guzik od MOdelu-->
+                    <button class="nav-item" data-target="/model">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Model</span>
+                    </button>
+                </nav>
+                <!--Czesc dolna opisowa-->
+                <div class="sidebar-footer">
+                    <div class="status-pill">
+                        <span class="status-dot status-dot--unknown"></span>
+                        <span class="status-text">API status: connected</span>
+                    </div>
+                    <p class="sidebar-meta">
+                        Backend: FastAPI + Detectron2<br/>
+                        Model: Faster R-CNN R50 FPN
+                        Made by kodON JW MG
+                    </p>
+                </div>
+            </aside>
+        <!--mainik-->
+            <main class="main">
+                <!--Gorny pasek-->
+                <header class="topbar">
+                    <div class="topbar-left">
+                        <h1 class="page-title">Nowa analiza</h1>
+                    </div>
+                    <div class="topbar-right">
+                        <div class="user-chip">
+                            <div class="user-avatar">M</div>
+                            <div class="user-info">
+                                <span class="user-name">MrBasis</span>
+                                <span class="user-role">Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!--glowny contetn-->
+                <section class="content">
+                    <div class="row row--upload">
+                        <section class="card card--upload-form">
+                            <header class="card-header">
+                                <h2 class="card-title">Konfiguracja analizy</h2>
+                                <span class="card-tag">Wczytaj obraz</span>
+                            </header>
+                            <div class="card-body">
+                                <form class="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
+                                    <div class="form-field">
+                                        <label for="analysis-name" class="form-label">
+                                            Nazwa analizy
+                                        </label>
+                                        <input 
+                                            type="text"
+                                            id="analysis-name"
+                                            name="analysis_name"
+                                            class="form-input"
+                                            placeholder="Próbka_067"
+                                        />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="analysis-image" class="form-label">
+                                            Obraz do analizy
+                                        </label>
+                                        <input 
+                                            type="file"
+                                            id="analysis-image"
+                                            name="analysis_image"
+                                            class="form-input form-input--file"
+                                            accept="image/png, image/jpeg"
+                                        />
+                                        <p class="form-hint">
+                                            Obsługiwane formaty: JPG, PNG.
+                                        </p>
+                                    </div>
+                                    <!--NOtes-->
+                                    <div class="form-field">
+                                        <label for="analysis-notes" class="form-label">
+                                            Notatki
+                                        </label>
+                                        <textarea
+                                        id="analysis-notes"
+                                        name="analysis_notes"
+                                        class="form-textarea"
+                                        rows="5"
+                                        placeholder="Notatki :D"
+                                        ></textarea>
+                                    </div>
+                                    <!--uruchomienie-->
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn-primary">
+                                            Urochom analizę
+                                        </button>
+                                        <button type="button" class="btn-ghost">
+                                            Clear
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-caption">
+                                    Po wysłaniu formularza wynik analizy pojawi się w zakładce <strong>History</strong>
+                                </p>
+                            </footer>
+                        </section>
+                        <!--podglad-->
+                        <section class="card card--upload-preview">
+                            <header class="card-header">
+                                <h2 class="card-title">Podgląd</h2>
+                            </header>
+                            <div class="card-body upload-preview-body">
+                                <div class="upload-preview-placeholder">
+                                    <span class="upload-preview-label">
+                                        Podgląd pojawi się tutaj
+                                    </span>
+                                </div>
+                                <!--wskazowki-->
+                                <ul class="upload-hints">
+                                    <li>Wrzucaj zdjęcia wyłącznie rozmazów krwi</li>
+                                    <li>Unikaj plikow o dużym rozmiarze</li>
+                                    <li>Pamiętaj o obsługiwanych formatach</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+
+            </main>
+        </div>
+        <script src="/static/JS/nav.js"></script> <!--odpowiada za przechodzenie miedzy tabami-->
+        <script src="/static/JS/upload.js"></script>
+    </body>
+</html>
+

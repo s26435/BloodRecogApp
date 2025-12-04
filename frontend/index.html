@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="/static/index.css">
+        <title>Ichor</title>
+    </head>
+    <body>
+        <div class="app">
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <div class="logo-mark">IL</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Ichor</span>
+                        <span class="logo-subtitle">Lab Console</span>
+                    </div>
+                </div>
+
+                <!--GUziki-->
+                <nav class="sidebar-nav">
+                    <!--Guzik od Homea-->
+                    <button class="nav-item nav-item--activate" data-target="/">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Home</span>
+                    </button>
+                    <!--Guzik od Uploada-->
+                    <button class="nav-item" data-target="/upload">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Upload</span>
+                    </button>
+                    <!--Guzik od Hisotri-->
+                    <button class="nav-item" data-target="/history">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">History</span>
+                    </button>
+                    <!--Guzik od MOdelu-->
+                    <button class="nav-item" data-target="/model">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-label">Model</span>
+                    </button>
+                </nav>
+                <!--Czesc dolna opisowa-->
+                <div class="sidebar-footer">
+                    <div class="status-pill">
+                        <span class="status-dot status-dot--unknown"></span>
+                        <span class="status-text">API status: connected</span>
+                    </div>
+                    <p class="sidebar-meta">
+                        Backend: FastAPI + Detectron2<br/>
+                        Model: Faster R-CNN R50 FPN
+                        Made by kodON JW MG
+                    </p>
+                </div>
+            </aside>
+
+            <!--GLowna czesc-->
+            <main class="main">
+                <!--Gorny pasek-->
+                <header class="topbar">
+                    <div class="topbar-left">
+                        <h1 class="page-title">Panel główny</h1>
+                        <p class="page-subtitle">
+                            Szybka analiza obrazów składników krwi
+                        </p>
+                    </div>
+                    <div class="topbar-right">
+                        <div class="user-chip">
+                            <div class="user-avatar">M</div>
+                            <div class="user-info">
+                                <span class="user-name">MrBasis</span>
+                                <span class="user-role">Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!--Main contencik-->
+                <section class="content">
+                    <!--1 czesc-->
+                    <div class="row row--top">
+                        <section class="card card--chart">
+                            <header class="card-header">
+                                <h2 class="card-title">Liczba analiz w czasie</h2>
+                                <span class="card-tag">Ostatnie 30 dni</span>
+                            </header>
+                            <div class="card-body card-body--chart">
+                                <div class="chart-placeholder" id="chart-placeholder">
+                                    <div class="chart-line"></div>
+                                    <div class="chart-glow"></div>
+                                    <div class="chart-axis chart-axis--x"></div>
+                                    <div class="chart-axis chart-axis--y"></div>
+                                    <div class="chart-point chart-point--hot"></div>
+                                    <div class="chart-point chart-point--soft"></div>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-caption">Wykres ilości analiz w czasie</p>
+                            </footer>
+                        </section>
+
+                        <section class="card card--gauge">
+                            <header class="card-header">
+                                <h2 class="card-title">Confidence threshold</h2>
+                            </header>
+                            <div class="card-body card-body--gauge">
+                                <div class="gauge">
+                                    <div class="gauge-arc"></div>
+                                    <div class="gauge-needle"></div>
+                                    <div class="gauge-center">
+                                        <span class="gauge-value">0.50</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-caption">Tu moze beda wartosci z config (well see)</p>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <!--2 czesc-->
+                    <div class="row row--stats">
+                        <section class="card card--stat">
+                            <header class="card-header">
+                                <h3 class="card-title">Łączna liczba analiz</h3>
+                            </header>
+                            <div class="card-body">
+                                <p class="stat-number" id="total-analyses">0</p>
+                                <p class="stat-label">zapisanych w historii</p>
+                            </div>
+                        </section>
+
+                        <section class="card card--stat">
+                            <header class="card-header">
+                                <h3 class="card-title">Ostatnia analiza</h3>
+                            </header>
+                            <div class="card-body">
+                                <p class="stat-number" id="last-analysis-ago">-</p>
+                                <p class="stat-label">czas od ostatniej analizy</p>
+                            </div>
+                        </section>
+
+                        <section class="card card--stat">
+                            <header class="card-header">
+                                <h3 class="card-title">Wersja modelu</h3>
+                            </header>
+                            <div class="card-body">
+                                <p class="stat-number">R50-FPN v1</p>
+                                <p class="stat-label">architektura chada(bazowa)</p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!--3 czesc-->
+                    <div class="row row--bottom">
+                        <section class="card card--wide">
+                            <header class="card-header">
+                                <h2 class="card-title">Szybki StArT</h2>
+                            </header>
+                            <div class="card-body">
+                                <ol class="quickstart-list">
+                                    <!--tu bedzie jakis basic guide co robic w odpalaniu-->
+                                    <li>Przejdź do zakładki Upload, gdzie stworzysz próbkę z analizą</li>
+                                    <li>Nazwij próbkę, załącz wybrane zdjęcie (pamiętaj o zgodnych formatach) oraz dodaj ewentualną notatkę</li>
+                                    <li>Po prawej stronie zobaczysz podgląd wybranego pliku, upewnij się czy to jest ten który chciałeś</li>
+                                    <li>Kliknij "Uruchom analizę" i zostaniesz przeniesiony do zakładki History, gdzie będzie na ciebie czekać gotowa analiza </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <!--to jest sekcja na taka poprzednia analize-->
+                        <section class="card card--recent">
+                            <header class="card-header">
+                                <h2 class="card-title">Ostatnie analizy</h2>
+                            </header>
+                            <div class="card-body">
+                                <ul class="recent-list" id="recent-analysis"></ul>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <script src="/static/JS/nav.js"></script> <!--odpowiada za przechodzenie miedzy tabami-->
+        <script src="/static/JS/index.js"></script> <!--odpowiada za funkcjonalność statystyk-->
+    </body>
+</html>
+
+
+
+
+
+
+
+
