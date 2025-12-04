@@ -44,31 +44,34 @@ document.addEventListener("DOMContentLoaded", () => {
             return `${days} dni`
         }
     }
+    function getLocalDateKey(d){
+        const y =d.getFullYear();
+        const m = String(d.getMonth()+1).padStart(2,"0");
+        const day= String(d.getDate()).padStart(2,"0");
+        return `${y}-${m}-${day}`
+    }
 
     function buildDailyCounts() {
         const today = new Date();
+        today.setHours(0, 0, 0, 0); 
         const days = [];
 
-        for (let i = 29; i>= 0; i--) {
-            const d = new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                today.getDate() - i
-            );
-            const key = d.toISOString().slice(0,10);
+        for (let daysAgo = 30; daysAgo >= 0; daysAgo--) {
+            const d = new Date(today);
+            d.setDate(today.getDate() - daysAgo);
             days.push({
-                key,
-                label: d.getDate(),
-                count : 0,
+                key: getLocalDateKey(d),
+                label: 30 - daysAgo, 
+                count: 0,
             });
         }
-
         analyses.forEach((a) => {
             const d = parseCreatedAt(a.created_at);
             if (!d) return;
-            const key = d.toISOString().slice(0,10);
-            const dayObj = days.find((dd) => dd.key ===key);
-            if (dayObj) dayObj.count +=1;
+            d.setHours(0, 0, 0, 0);
+            const key = getLocalDateKey(d);
+            const dayObj = days.find((dd) => dd.key === key);
+            if (dayObj) dayObj.count += 1;
         });
         return days;
     }

@@ -282,7 +282,7 @@ body {
 .chart-bars {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(30, minmax(0, 1fr));
+    grid-template-columns: repeat(31, minmax(0, 1fr));
     align-items: flex-end;
     gap: 2px;
     width: 100%;
@@ -294,6 +294,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    height: 100%;
 }
 .chart-bar {
     width: 100%;
@@ -412,7 +413,7 @@ body {
     top: 26%;
     left: 50%;
     transform-origin: bottom center;
-    transform: translateX(-50%) rotate(25deg);
+    transform: translateX(-50%) rotate(0deg);
     box-shadow: 0 0 10px rgba(255,255,255,0.6);
 }
 .gauge-center {
