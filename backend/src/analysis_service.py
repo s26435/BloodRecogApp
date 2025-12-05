@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 from PIL import Image
-from src.utils import build_predictor, run_inference_on_image
+from src.utils import build_cfg_infer, run_inference_on_image
 from src.train import train_new_model
 from src.download_ds import download_ds
 
@@ -34,10 +34,10 @@ def _ensure_model() -> Tuple[Any, Any]:
             download_ds()
         train_new_model(str(OUT_DIR))
 
-    predictor, infer_cfg = build_predictor(str(OUT_DIR))
-    return predictor, infer_cfg
+    infer_cfg = build_cfg_infer(str(OUT_DIR))
+    return infer_cfg
 
-_predictor, _infer_cfg = _ensure_model()
+_infer_cfg = _ensure_model()
 
 
 def load_analyses() -> List[Dict[str, Any]]:
@@ -73,7 +73,7 @@ def process_analysis(
     except Exception as exc:
         raise ValueError("Nie udało się odczytać obrazu") from exc
 
-    vis_image = run_inference_on_image(_predictor, _infer_cfg, np.array(image))
+    vis_image = run_inference_on_image(_infer_cfg, np.array(image))
     result_np = vis_image.get_image()
     result_image = Image.fromarray(result_np)
 

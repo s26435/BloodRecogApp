@@ -7,8 +7,9 @@ from detectron2.utils.visualizer import ColorMode, VisImage, Visualizer
 
 
 def run_inference_on_image(
-    predictor: DefaultPredictor, cfg: CfgNode, img: Image
-) -> VisImage:
+    cfg: CfgNode, img: Image
+) -> VisImage: 
+    predictor = DefaultPredictor(cfg)
     outputs = predictor(img)
 
     metadata = MetadataCatalog.get(cfg.DATASETS.TEST[0])
@@ -21,7 +22,7 @@ def run_inference_on_image(
     return v.draw_instance_predictions(outputs["instances"].to("cpu"))
 
 
-def build_predictor(out_dir: str) -> DefaultPredictor:
+def build_cfg_infer(out_dir: str) -> CfgNode:
     cfg: CfgNode = get_cfg()
     cfg.merge_from_file(f"{out_dir}/config.yaml")
 
@@ -34,5 +35,4 @@ def build_predictor(out_dir: str) -> DefaultPredictor:
     infer_cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5
     infer_cfg.DATASETS.TEST = ("val",)
 
-    predictor = DefaultPredictor(infer_cfg)
-    return predictor, infer_cfg
+    return  infer_cfg 

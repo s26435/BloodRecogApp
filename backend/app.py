@@ -4,6 +4,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 import dotenv
 from src.analysis_service import process_analysis, list_analyses, get_analysis, UPLOADS_DIR
+
+from src.analysis_service import _infer_cfg
 dotenv.load_dotenv()
 
 #Ścieżki 
@@ -87,3 +89,12 @@ def api_get_analysis(analysis_id: str):
     if record is None:
         raise HTTPException(status_code=404, detail="Nie znaleziono analizy")
     return record
+
+@app.get("/api/confidence/{conf}")
+def set_conf(conf: float):
+    if _infer_cfg:
+        _infer_cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = conf
+        print(_infer_cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST)
+        return {"success": conf}
+    else:
+        raise HTTPException(500, detail="No inference cfg node created!")

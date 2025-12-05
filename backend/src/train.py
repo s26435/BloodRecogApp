@@ -42,7 +42,7 @@ def train_new_model(output_dir: str, datset_dir: str = ""):
             )
     cfg.DATASETS.TRAIN = ("train",)
     cfg.DATASETS.TEST = ("val",)
-    cfg.SOLVER.MAX_ITER = 1000 #200 mi wystarczy do testow dzialania strony
+    cfg.SOLVER.MAX_ITER = 3500 #200 mi wystarczy do testow dzialania strony
     cfg.OUTPUT_DIR = output_dir
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
